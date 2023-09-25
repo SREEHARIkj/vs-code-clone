@@ -1,9 +1,8 @@
-'use client'
+"use client";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
 
-import Editor from '@monaco-editor/react';
+import Editor from "@monaco-editor/react";
 
 export default function MonacoEditor() {
   function handleEditorChange(value, event) {
@@ -11,12 +10,12 @@ export default function MonacoEditor() {
   }
 
   function handleEditorDidMount(editor, monaco) {
-    console.log('onMount: the editor instance:', editor);
-    console.log('onMount: the monaco instance:', monaco);
+    console.log("onMount: the editor instance:", editor);
+    console.log("onMount: the monaco instance:", monaco);
   }
 
   function handleEditorWillMount(monaco) {
-    console.log('beforeMount: the monaco instance:', monaco);
+    console.log("beforeMount: the monaco instance:", monaco);
   }
 
   function handleEditorValidation(markers) {
@@ -26,14 +25,14 @@ export default function MonacoEditor() {
 
   return (
     <Editor
-      height="90vh"
+      height="100%"
       defaultLanguage="javascript"
       defaultValue="// some comment"
       onChange={handleEditorChange}
       onMount={handleEditorDidMount}
       beforeMount={handleEditorWillMount}
       onValidate={handleEditorValidation}
-      theme='vs-dark'
+      theme="vs-dark"
     />
   );
 }
