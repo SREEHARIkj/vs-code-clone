@@ -1,6 +1,4 @@
-import './globals.css'
-// import '/node_modules/react-grid-layout/css/styles.css';
-// import '/node_modules/react-resizable/css/styles.css';
+import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
