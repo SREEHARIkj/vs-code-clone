@@ -3,7 +3,7 @@
 import CDialog from "@/components/CDialog";
 import CSelect from "@/components/CSelect";
 import { Text, Heading } from "@/components/TextComponent";
-import useEditorStore from "@/store";
+import { useEditorStore } from "@/store";
 import * as React from "react";
 export interface IHomePageProps {}
 
