@@ -6,7 +6,7 @@ import Editor from "@monaco-editor/react";
 import { useEditorStore } from "@/store";
 
 export default function MonacoEditor() {
-  const { activeTab: file } = useEditorStore((store) => store);
+  const file = useEditorStore((store) => store?.activeTab);
 
   function handleEditorChange(value, event) {
     // here is the current value
