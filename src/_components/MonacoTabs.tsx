@@ -21,7 +21,7 @@ const TabButton: React.FunctionComponent<TabButtonType> = ({
 }) => {
   return (
     <div
-      className={`w-[6rem] 
+      className={`w-fit
       h=[10px] 
       flex flex-row gap-1 
       justify-between 
@@ -37,31 +37,33 @@ const TabButton: React.FunctionComponent<TabButtonType> = ({
       onClick={onClick}
     >
       <div className="overflow-hidden text-sm font-medium">{children}</div>
-      <div className="p-1 hover:bg-red-500 transition">
-        <X size={"12px"} onClick={onClose} />
+      <div className="p-1 hover:bg-red-500 transition" onClick={onClose}>
+        <X size={"12px"} />
       </div>
     </div>
   );
 };
 
 const MonacoTabs: React.FunctionComponent<IMonacoTabsProps> = (props) => {
-  const { editorTabList, setActiveTab , removeTab} = useEditorStore((store) => store);
-  
+  const { editorTabList, setActiveTab, removeTab } = useEditorStore(
+    (store) => store
+  );
+
   const [activeBtn, setActiveBtn] = React.useState<number>(0);
   return (
     <>
       <div className="flex flex-row gap-1">
         {editorTabList?.map((tab) => (
           <TabButton
-            key={tab.tabId}
+            key={tab?.tabId}
             onClick={() => {
-              setActiveTab(tab.tabId);
-              setActiveBtn(tab.tabId);
+              setActiveTab(tab?.tabId);
+              setActiveBtn(tab?.tabId);
             }}
-            onClose={()=>removeTab(tab.tabId)}
-            active={tab.tabId === activeBtn}
+            onClose={() => removeTab(tab?.tabId)}
+            active={tab?.tabId === activeBtn}
           >
-            {tab.name}
+            {tab?.name}
           </TabButton>
         ))}
       </div>

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/select";
 
 import * as React from "react";
+import { ClassNameValue, twMerge } from "tailwind-merge";
 
 type SelectValue = {
   value: string;
@@ -16,7 +17,7 @@ type SelectValue = {
 interface ICSelectProps {
   placeholder?: string;
   options?: Array<any>;
-  className?: ClassDecorator;
+  className?: ClassNameValue;
   onChange?: (params: any) => any;
 }
 
@@ -26,12 +27,14 @@ const CSelect: React.FunctionComponent<ICSelectProps> = (
 ) => {
   return (
     <Select onValueChange={onChange}>
-      <SelectTrigger className={`${className} w-full`}>
+      <SelectTrigger className={twMerge('w-full', className)}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
-        {options?.map((v) => (
-          <SelectItem value={v.value}>{v.label}</SelectItem>
+        {options?.map((v, i) => (
+          <SelectItem key={v.value ?? `key-${i}`} value={v.value}>
+            {v.label}
+          </SelectItem>
         ))}
       </SelectContent>
     </Select>
